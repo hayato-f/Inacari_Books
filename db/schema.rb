@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_19_022615) do
+ActiveRecord::Schema.define(version: 2022_10_20_023335) do
 
   create_table "books", force: :cascade do |t|
     t.integer "seller_id", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2022_10_19_022615) do
     t.integer "postage", null: false
     t.boolean "published", null: false
     t.boolean "soldout", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment", null: false
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

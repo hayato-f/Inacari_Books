@@ -14,4 +14,5 @@ class User < ApplicationRecord
     validates :shipping_address, presence: true
 
     has_many :books, dependent: :destroy
+    has_many :comments, dependent: :destroy
 end

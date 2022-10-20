@@ -5,4 +5,7 @@ class Book < ApplicationRecord
     validates :product_condition, presence: true
     validates :price, presence: true
     validates :postage, presence: true
+
+    belongs_to :user
+    has_many :comments, dependent: :destroy
 end
