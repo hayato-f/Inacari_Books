@@ -12,6 +12,7 @@
   <body>
     <% if current_user %>
       <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %>
+      <%= link_to '退会', current_user, method: :delete, data: { confirm: "退会するとこれまでのデータを元に戻すことができません。本当に宜しいですか？" }, class: "nav-link" %>
     <% end %>
     <% if flash.notice.present? %>
       <div class="alert alert-success"><%= flash.notice %></div>

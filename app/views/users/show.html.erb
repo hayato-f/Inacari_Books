@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>ユーザー詳細</h1>
+
+<!-- ユーザー情報 -->
+<div>
+  <div><%= @user.account_name %></div>
+  <div>自己紹介文</div>
+  <% if current_user && current_user.id == @user.id %>
+    <%= link_to 'プロフィール編集', edit_user_path(current_user.id), class: "nav-link" %>
+  <% end %>
+</div>
+<!-- ユーザー情報END -->
+
+<!-- 出品中の商品 -->
+<!-- 出品中の商品END -->

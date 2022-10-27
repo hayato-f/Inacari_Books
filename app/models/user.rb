@@ -13,6 +13,6 @@ class User < ApplicationRecord
     validates :tel,  presence: true, length: { minimum: 10, maximum: 11 }
     validates :shipping_address, presence: true
 
-    has_many :books, dependent: :destroy
+    has_many :books, dependent: :destroy, foreign_key: :seller_id
     has_many :comments, dependent: :destroy
 end
