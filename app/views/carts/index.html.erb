@@ -1,0 +1,15 @@
+<h1>カート</h1>
+<% unless @books.empty? %>
+  <p>以下の商品がカートに含まれています</p>
+<% else %>
+  <p>カートは空です</p>
+<% end %>
+
+<% @books.each do |book| %>
+  <div><%= book.title %></div>
+  <div><%= book.price.to_s(:delimited) %>円</div>
+  <%= link_to '削除', carts_path(params: { cart: { book_id: book.id } }), method: :delete, class: "nav-link" %>
+<% end %>
+<hr>
+<div>小計：<%= @total.to_s(:delimited) %>円</div>
+<div>送料：<%= @postage.to_s(:delimited) %>円</div>

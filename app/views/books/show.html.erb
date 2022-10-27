@@ -1,2 +1,26 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>書籍詳細</h1>
+
+<!-- 書籍情報 -->
+<div>
+  <div>出品者：</div>
+  <div><%= @book.user.account_name %></div>
+  <div>カテゴリー：</div>
+  <div>小説</div>
+  <div>タイトル：</div>
+  <div><%= @book.title %></div>
+  <div>商品の状態：</div>
+  <div><%= @book.product_condition %></div>
+  <div>税込価格：</div>
+  <div><%= @book.price %></div>
+  <div>送料：</div>
+  <div><%= @book.postage %></div>
+  <div>配送方法：</div>
+  <div>配送方法</div>
+  <div>商品の説明：</div>
+  <div><%= @book.description %></div>
+  <%= link_to 'カートに入れる', carts_path(params: { cart: { book_id: @book.id } }), method: :post, class: "nav-link" %>
+</div>
+<!-- 書籍情報END -->
+
+<!-- コメント -->
+<!-- コメントEND -->

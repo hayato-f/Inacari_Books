@@ -11,6 +11,9 @@
 
   <body>
     <% if current_user %>
+      <%= link_to '書籍一覧', books_path, class: "nav-link" %>
+      <%= link_to '出品', new_book_path, class: "nav-link" %>
+      <%= link_to 'カート', carts_path, class: "nav-link" %><span><%= session[:carts].count if session[:carts] && !session[:carts].empty? %></span>
       <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %>
       <%= link_to '退会', current_user, method: :delete, data: { confirm: "退会するとこれまでのデータを元に戻すことができません。本当に宜しいですか？" }, class: "nav-link" %>
     <% end %>

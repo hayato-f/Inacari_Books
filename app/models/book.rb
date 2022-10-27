@@ -6,7 +6,7 @@ class Book < ApplicationRecord
     validates :price, presence: true
     validates :postage, presence: true
 
-    belongs_to :user
+    belongs_to :user, foreign_key: :seller_id
     has_many :comments, dependent: :destroy
     has_many :book_categories
     has_many :categories, through: :book_categories
