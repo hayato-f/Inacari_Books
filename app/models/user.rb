@@ -3,7 +3,7 @@ class User < ApplicationRecord
     mount_uploader :icon, IconUploader
 
     validates :name, presence: true
-    validates :accont_name, presence: true
+    validates :account_name, presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
                         format: { with: VALID_EMAIL_REGEX },

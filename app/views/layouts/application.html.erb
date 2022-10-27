@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %>
+    <% end %>
+    <% if flash.notice.present? %>
+      <div class="alert alert-success"><%= flash.notice %></div>
+    <% end %>
+    <% if flash[:danger].present? %>
+      <ul class="alert alert-danger">
+        <% flash[:danger].each do |d| %>
+          <li><%= d %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>
