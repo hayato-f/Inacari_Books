@@ -1,4 +1,7 @@
 class Book < ApplicationRecord
+    scope :published, -> {where(published: true)}
+    scope :unpublished, -> {where(published: false)}
+
     mount_uploader :image, ImageUploader
 
     validates :title, presence: true

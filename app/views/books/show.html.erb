@@ -1,2 +1,25 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h2>商品詳細ページ</h2>
+<%# <div> %>
+    <%# <% @book.categories.each do |category| %>
+        <%# <span><%= category.name %></span>
+    <%# <% end %> %>
+<%# </div> %>
+<div>
+    <span>タイトル：</span><%= @book.title %>
+<p>
+    <%= image_tag @book.image.url %>
+</p>
+</div>
+<div>
+    <span>商品の状態：</span><%= @book.product_condition %>
+</div>
+<div>
+    <span>商品説明：</span><%= @book.description %>
+</div>
+<div>
+    <span>税込価格：</span><%= @book.price %><span>円</span>
+</div>
+<div>
+    <span>送料：</span><%= @book.postage %><span>円</span>
+</div>
+

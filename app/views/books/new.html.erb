@@ -1,2 +1,68 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h2>商品登録</h2>
+<div class="field">
+    <%= form_with(model: @category, local: true) do |f| %>
+        <div>
+            <%= f.label :カテゴリー %>
+            <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>
+                <div>
+                    <%= c.label class: 'form-check-label' do %>
+                        <%= c.check_box class: 'form-check-input' %>
+                        <%= c.text %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+    <%= form_with(model: @book, local: true) do |f| %>
+        <div>
+            <%= f.label :本のタイトル %>
+            <%= f.text_field :title %>
+        </div>
+        <div>
+            <%= f.label :画像 %>
+            <%= f.file_field :image%>
+        </div>
+        <div>
+            <%= f.label :商品の状態 %>
+                <%= f.radio_button :product_condition, "新品、未使用" %>
+                <%= f.label :product_condition, "新品、未使用", value: "新品、未使用" %>
+                <%= f.radio_button :product_condition, "ほぼ新品" %>
+                <%= f.label :product_condition, "ほぼ新品", value: "ほぼ新品" %>
+                <%= f.radio_button :product_condition, "良い", checked: true %>
+                <%= f.label :product_condition, "良い", value: "良い" %>
+                <%= f.radio_button :product_condition, "可" %>
+                <%= f.label :product_condition, "可", value: "可" %>
+        </div>
+        <div>
+            <%= f.label :商品の説明 %>
+            <%= f.text_area :description %>
+        </div>
+        <div>
+            <%= f.label :税込価格 %>
+            <%= f.number_field :price %><span>円</span>
+        </div>
+        <div>
+            <%= f.label :送料 %>
+            <%= f.number_field :postage %><span>円</span>
+        </div>
+        <div>
+            <%= f.label :公開・非公開 %>
+                <%= f.radio_button :published, 'true', checked: true %>
+                <%= f.label :published, "公開", value: true %>
+                <%= f.radio_button :published, 'false' %>
+                <%= f.label :published, "非公開", value: false %>
+        </div>
+        <div>
+            <%= f.label :販売中・売切 %>
+                <%= f.radio_button :soldout, 'false', checked: true %>
+                <%= f.label :soldout, "販売中", value: false %>
+                <%= f.radio_button :soldout, 'true' %>
+                <%= f.label :soldout, "売切", value: true %>
+        </div>
+            <%= f.hidden_field :seller_id, value: 1 %>
+        <div>
+            <%= f.submit "出品する" %>
+        </div>
+    <% end %>
+</div>
+
