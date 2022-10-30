@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    if @book.save
+    if @book.save!
       redirect_to root_path
     else
       render :new
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_url, notice: "削除しました"
+    redirect_to request.referer, notice: "削除しました"
   end
 
   private
