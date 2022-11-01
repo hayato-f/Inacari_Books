@@ -1,0 +1,69 @@
+// .index-container {
+// }
+.nav-link {
+    float: right;
+    padding-left: 10px;
+}
+
+.index {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.index-info {
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+.index-book-image:hover {
+    opacity: 70%;
+}
+
+table {
+    border-collapse: collapse;
+    border: solid 2px burlywood;/*表全体を線で囲う*/
+    margin-bottom: 10px;
+}
+
+table th{/*thに対して*/
+    background: #fff5e5;/*背景色*/
+}
+
+table th, table td {
+    border: solid 1px burlywood;/**/
+    padding: 5px;
+}
+
+.book-container {
+    display: flex;
+}
+
+.book-info {
+    margin-left: 20px;
+}
+
+.button {
+    font-size: large;
+    background-color: burlywood;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.button-delete {
+    font-size: large;
+    background-color: gainsboro;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 80%;
+}
+
+.comment-index {
+    border-color: white;
+}
