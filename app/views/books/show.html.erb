@@ -1,25 +1,70 @@
 <h2>商品詳細ページ</h2>
-<%# <div> %>
-    <%# <% @book.categories.each do |category| %>
-        <%# <span><%= category.name %></span>
-    <%# <% end %> %>
-<%# </div> %>
-<div>
-    <span>タイトル：</span><%= @book.title %>
-<p>
-    <%= image_tag @book.image.url %>
-</p>
-</div>
-<div>
-    <span>商品の状態：</span><%= @book.product_condition %>
-</div>
-<div>
-    <span>商品説明：</span><%= @book.description %>
-</div>
-<div>
-    <span>税込価格：</span><%= @book.price %><span>円</span>
-</div>
-<div>
-    <span>送料：</span><%= @book.postage %><span>円</span>
+
+<div class="book-container">
+    <div class="book-image">
+        <%= image_tag @book.image.url, size: '400x550' %>
+    </div>
+
+<%# 本の情報 %>
+    <div class="book-info">
+        <table>
+            <tr>
+                <th>カテゴリ</th>
+                <td>
+                    <% @book.categories.each do |category| %>
+                    <%= category.name %>
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <th>出品者</th><td><%= @book.seller.account_name %></td>
+            </tr>
+            <tr>
+                <th>タイトル</th><td><%= @book.title %></td>
+            </tr>
+            <tr>
+                <th>商品の状態</th><td><%= @book.product_condition %></td>
+            </tr>
+            <tr>
+                <th>商品説明</th><td><%= @book.description %></td>
+            </tr>
+            <tr>
+                <th>税込価格</th><td><%= @book.price %><span>円</span></td>
+            </tr>
+            <tr>
+                <th>送料</th><td><%= @book.postage %><span>円</span></td>
+            </tr>
+        </table>
+
+<%# ログインユーザーが出品した商品のみ編集ボタンが表示される %>
+        <% if current_user && current_user.id == @book.seller_id %>
+            <%= button_to "編集する", edit_book_path(@book.id), method: :get, class: "button" %>
+        <% end %>
+    </div>
 </div>
 
+<%# コメントフォーム %>
+<div class="comment-wrapper">
+    <div class="comment-form">
+    <%= form_with(model:[@book, @comment], method: :post) do |f| %>
+        <%= f.text_area :comment, placeholder: "コメント…"  %>
+    </div>
+        <%= f.hidden_field :book_id, value: @book.id %>
+    </div>
+    <div>
+        <%= f.submit "コメントする", class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+</div>
+
+<h3>コメント一覧</h3>
+<table class="comment-index">
+<% @book.comments.each do |comment| %>
+    <tr class="comment-index">
+        <td class="comment-index"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="comment-index"><%= comment.user.account_name %></td>
+        <td class="comment-index"><%= comment.comment %></td>
+        <td class="comment-index"><%= button_to '削除', book_comment_path(@book, comment), data: {confirm: "削除してよろしいですか？"}, method: :delete, class: "button-delete" %></td>
+    </tr>
+<% end %>
+</table>
