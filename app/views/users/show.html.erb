@@ -1,14 +1,57 @@
-<h1>ユーザー詳細</h1>
+<h2>ユーザー詳細ページ</h2>
 
 <!-- ユーザー情報 -->
 <div>
-  <div><%= @user.account_name %></div>
-  <div>自己紹介文</div>
-  <% if current_user && current_user.id == @user.id %>
-    <%= link_to 'プロフィール編集', edit_user_path(current_user.id), class: "nav-link" %>
-  <% end %>
+    <div><span>お名前：</span><%= @user.name %></div>
+    <div><span>アカウント名：</span><%= @user.account_name %></div>
+    <div><span>ご住所：</span><%= @user.shipping_address %></div>
+    <div><span>お電話番号：</span><%= @user.tel %></div>
+    <div>自己紹介文</div>
+    <% if current_user && current_user.id == @user.id %>
+        <%= link_to 'プロフィール編集', edit_user_path(current_user.id), class: "nav-link" %>
+    <% end %>
 </div>
 <!-- ユーザー情報END -->
 
 <!-- 出品中の商品 -->
+<h2>公開(出品)中の商品</h2>
+<div id="index-container">
+    <div class="index">
+        <% @user.books.where(published: true).each do |book| %>
+        <div class="index-info">    
+            <%= link_to book_path(book.id) do %>
+                <%= image_tag book.image.url, class: "index-book-image", size: '200x280' %>
+            <% end %>
+            <div>
+                <%= truncate(book.title, length:12) %>
+                <%= book.price %><span>円</span>
+                <% if current_user && current_user.id == @user.id %>
+                    <%= button_to "編集する", edit_book_path(book.id), method: :get, class: 'btn btn-danger' %>
+                    <%= button_to "削除する", book_path(book.id), method: :delete, data: { confirm: "商品を削除します。よろしいですか？"} , class: 'btn btn-danger' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<h2>非公開の商品</h2>
+<div id="index-container">
+    <div class="index">
+        <% @user.books.where(published: false).each do |book| %>
+        <div class="index-info">    
+            <%= link_to book_path(book.id) do %>
+                <%= image_tag book.image.url, class: "index-book-image", size: '200x280' %>
+            <% end %>
+            <div>
+                <%= truncate(book.title, length:12) %>
+                <%= book.price %><span>円</span>
+                <% if current_user && current_user.id == @user.id %>
+                    <%= button_to "編集する", edit_book_path(book.id), method: :get, class: 'btn btn-danger' %>
+                    <%= button_to "削除する", book_path(book.id), method: :delete, data: { confirm: "商品を削除します。よろしいですか？"} , class: 'btn btn-danger' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
 <!-- 出品中の商品END -->
