@@ -1,14 +1,26 @@
 <h2>ユーザー詳細ページ</h2>
-
+<h3>会員情報</h3>
 <!-- ユーザー情報 -->
+<table>
+    <tr>
+        <th>お名前</th><td><%= @user.name %></td>
+    </tr>
+    <tr>
+        <th>アカウント名</th><td><%= @user.account_name %></td>
+    </tr>
+    <tr>
+        <th>ご住所</th><td><%= @user.shipping_address %></td>
+    </tr>
+    <tr>
+        <th>お電話番号</th><td><%= @user.tel %></td>
+    </tr>
+    <tr>
+        <th>自己紹介文</th>
+    </tr>
+</table>
 <div>
-    <div><span>お名前：</span><%= @user.name %></div>
-    <div><span>アカウント名：</span><%= @user.account_name %></div>
-    <div><span>ご住所：</span><%= @user.shipping_address %></div>
-    <div><span>お電話番号：</span><%= @user.tel %></div>
-    <div>自己紹介文</div>
     <% if current_user && current_user.id == @user.id %>
-        <%= link_to 'プロフィール編集', edit_user_path(current_user.id), class: "nav-link" %>
+        <%= link_to 'プロフィール編集', edit_user_path(current_user.id), class: "nav-link-edit" %>
     <% end %>
 </div>
 <!-- ユーザー情報END -->
