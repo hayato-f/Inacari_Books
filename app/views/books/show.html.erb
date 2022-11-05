@@ -43,10 +43,10 @@
     </div>
 </div>
 
-<%# コメントフォーム %>
+<%# コメントフォーム リダイレクトしないと表示されなかったからlocal: true（Ajax使わない）書いたらキタ%>
 <div class="comment-wrapper">
     <div class="comment-form">
-    <%= form_with(model:[@book, @comment], method: :post) do |f| %>
+    <%= form_with(model:[@book, @comment], method: :post, local: true) do |f| %>
         <%= f.text_area :comment, placeholder: "コメント…"  %>
     </div>
         <%= f.hidden_field :book_id, value: @book.id %>
@@ -59,7 +59,7 @@
 
 <h3>コメント一覧</h3>
 <table class="comment-index">
-<% @book.comments.each do |comment| %>
+<% @comments.each do |comment| %>
     <tr class="comment-index">
         <td class="comment-index"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td class="comment-index"><%= comment.user.account_name %></td>
