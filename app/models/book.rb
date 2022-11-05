@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
     scope :published, -> {where(published: true).order(created_at: :desc)}
     scope :unpublished, -> {where(published: false).order(created_at: :desc)}
+    scope :keyword_search, ->(title) {where("title like ?", "%#{title}%")}
 
     mount_uploader :image, ImageUploader
 

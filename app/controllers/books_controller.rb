@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
   def index
     @books = Book.published
+    if params[:title].present?
+      @books = @books.keyword_search(params[:title])
+    end
   end
 
   def new
@@ -19,8 +22,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
-    @comments = Comment.all.order(created_at: :desc)
+    @comments = @book.comments.order(created_at: :desc)
   end
 
   def edit

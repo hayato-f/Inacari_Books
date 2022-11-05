@@ -1,3 +1,10 @@
+<div>
+    <%= form_with(url: root_path, method: :get, local: true) do %>
+    <%= text_field_tag :title, params[:title], placeholder: "キーワード検索…"   %>
+    <%= submit_tag "検索" %>
+    <% end %>
+</div>
+
 <h2>商品一覧ページ</h2>
 <div class="index-container">
     <div class="index">
