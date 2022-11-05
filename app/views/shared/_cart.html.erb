@@ -1,0 +1,17 @@
+<% if @cart_books%>
+    <% @cart_books.each do |cart_book| %>
+        <li>タイトル： <%= cart_book.title %></li>
+        <li>状態： <%= cart_book.product_condition %></li>
+        <li>概要： <%= cart_book.description %></li>
+        <li>価格： ¥<%= cart_book.price %></li>
+        <li>送料： ¥<%= cart_book.postage %></li>
+        <li><%#= image_tag "@cart_books.image" %></li>
+        <li><%= "-" * 80 %></li>
+    <% end %>
+    <p>小計: ¥<%= @sub_total_price %></p>
+    <%= "-" * 80 %>
+    <p>合計: ¥<%= @total_price%></p>
+    <%= "-" * 80 %>
+<% else %>
+    <h1>商品を追加しよう！！</h1> <%# => この条件分岐いらないかも　%>
+<% end %>

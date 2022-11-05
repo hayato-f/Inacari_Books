@@ -1,2 +1,13 @@
 <h1>Books#index</h1>
 <p>Find me in app/views/books/index.html.erb</p>
+<% @books.each do |book| %>
+    <li>本のID<%= book.id %></li>
+    <li>出品者 id:<%= book.seller_id %></li>
+    <li><%= book.title %></li>
+    <li><%= book.product_condition %></li>
+    <li><%= book.price %></li>
+    <li><%= book.postage %></li>
+    <%#= button_to " カートに入れる", {controller: "carts", action: "index"} %>  <%# button_toはデフォルトでpost %>
+    <%= button_to " カートに入れる", "/carts", {params: {book_id: book.id}} if current_user%>  <%# button_toはデフォルトでpost %>
+    <li><%= "-" * 50 %></li>
+<% end %>
