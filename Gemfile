@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 # add
   gem 'carrierwave'
   gem 'mini_magick'
-
+  gem 'faker'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @books = Book.find_by(seller_id: current_user.id)
+
     user_id = params[:id]
     @user = User.find_by(id: user_id)
     if @user.nil?

@@ -1,3 +1,4 @@
+
 <div>
     <%= form_with(url: root_path, method: :get, local: true) do %>
     <%= text_field_tag :title, params[:title], placeholder: "キーワード検索…"   %>
@@ -17,7 +18,12 @@
                 <%= truncate(book.title, length:11) %>
                 <%= book.price %><span>円</span>
             </div>
+            <div>
+                <%= button_to " カートに入れる", "/carts", {params: {book_id: book.id}} if current_user%> <%# button_toはデフォルトでpost %>
+                <%= "-" * 50 %>
+            </div>
         </div>
         <% end %>
     </div>
 </div>
+
