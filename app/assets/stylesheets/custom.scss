@@ -42,6 +42,10 @@ table th, table td {
     margin-left: 20px;
 }
 
+.user-container {
+    display: flex;
+}
+
 .button {
     font-size: large;
     background-color: burlywood;
@@ -66,4 +70,13 @@ table th, table td {
 
 .comment-index {
     border-color: white;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 }
