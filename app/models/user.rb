@@ -15,4 +15,5 @@ class User < ApplicationRecord
 
     has_many :books, dependent: :destroy, foreign_key: :seller_id
     has_many :comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy
 end

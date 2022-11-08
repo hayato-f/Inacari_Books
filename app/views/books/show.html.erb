@@ -42,7 +42,13 @@
         <% end %>
     </div>
 </div>
-
+<div>
+    <% if logged_in? %>
+        <div id="favorite_btn_<%= @book.id %>">
+            <%= render 'favorites/favorite', book: @book %>
+        </div>
+    <% end %>
+</div>
 <%# コメントフォーム リダイレクトしないと表示されなかったからlocal: true（Ajax使わない）書いたらキタ%>
 <div class="comment-wrapper">
     <div class="comment-form">
