@@ -29,7 +29,7 @@
                 <th>商品説明</th><td><%= @book.description %></td>
             </tr>
             <tr>
-                <th>税込価格</th><td><%= @book.price %><span>円</span></td>
+                <th>税込価格</th><td><%= @book.price.to_s(:delimited, delimiter: ',') %><span>円</span></td>
             </tr>
             <tr>
                 <th>送料</th><td><%= @book.postage %><span>円</span></td>

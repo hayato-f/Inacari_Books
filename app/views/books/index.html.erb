@@ -16,7 +16,7 @@
             <% end %>
             <div>
                 <%= truncate(book.title, length:12) %>
-                <i class="fa-brands fa-product-hunt"></i><%= book.price %>
+                <i class="fa-brands fa-product-hunt"></i><%= book.price.to_s(:delimited, delimiter: ',') %>
             </div>
             <div>
                 <%= button_to "カートに入れる", "/carts", {params: {book_id: book.id}} if current_user %> <%# button_toはデフォルトでpost %>

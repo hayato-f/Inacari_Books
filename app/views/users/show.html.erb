@@ -42,7 +42,7 @@
             <% end %>
             <div>
                 <%= truncate(book.title, length:12) %>
-                <%= book.price %><span>円</span>
+                <%= book.price.to_s(:delimited, delimiter: ',') %><span>円</span>
                 <% if current_user && current_user.id == @user.id %>
                     <%= button_to "編集する", edit_book_path(book.id), method: :get, class: 'btn btn-danger' %>
                     <%= button_to "削除する", book_path(book.id), method: :delete, data: { confirm: "商品を削除します。よろしいですか？"} , class: 'btn btn-danger' %>
@@ -62,7 +62,7 @@
             <% end %>
             <div>
                 <%= truncate(book.title, length:12) %>
-                <%= book.price %><span>円</span>
+                <%= book.price.to_s(:delimited, delimiter: ',') %><span>円</span>
                 <% if current_user && current_user.id == @user.id %>
                     <%= button_to "編集する", edit_book_path(book.id), method: :get, class: 'btn btn-danger' %>
                     <%= button_to "削除する", book_path(book.id), method: :delete, data: { confirm: "商品を削除します。よろしいですか？"} , class: 'btn btn-danger' %>
