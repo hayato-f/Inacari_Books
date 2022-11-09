@@ -17,7 +17,7 @@
                 </td>
             </tr>
             <tr>
-                <th>出品者</th><td><%= @book.seller.account_name %></td>
+                <th>出品者</th><td><%= link_to @book.seller.account_name, user_path(@book.seller_id) %></td>
             </tr>
             <tr>
                 <th>タイトル</th><td><%= @book.title %></td>
