@@ -6,7 +6,7 @@
         <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>
         <div>
             <%= c.label do %>
-                <%= c.check_box %>
+                <%= c.check_box({ class: 'js-check' }) %>
                 <%= c.text %>
             <% end %>
         </div>
@@ -59,3 +59,35 @@
     </div>
     <% end %>
 </div>
+
+<script>
+const checkbox = document.querySelectorAll(".js-check");
+checkbox.forEach(element => {
+    element.addEventListener('click', function () {
+        let check_count = 0;
+        checkbox.forEach(elem => {
+            if(elem.checked) check_count++;
+        });
+        console.log(check_count);
+        if(check_count === 0) {
+            checkbox.forEach(elem => {
+                if(elem.classList.contains('locked')) elem.classList.remove('locked');
+            });
+        } else if(check_count > 2) {
+            checkbox.forEach(elem => {
+                if(!elem.checked) {
+                    elem.setAttribute('disabled', true);
+                    elem.classList.add('locked');
+                }
+            });
+        } else {
+            checkbox.forEach(elem => {
+                if(!elem.checked) {
+                    elem.removeAttribute('disabled');
+                    elem.classList.remove('locked');
+                }
+            });
+        }
+    })
+});
+</script>
