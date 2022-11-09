@@ -1,8 +1,8 @@
 
-<div>
+<div class="search-form">
     <%= form_with(url: root_path, method: :get, local: true) do %>
-    <%= text_field_tag :title, params[:title], placeholder: "キーワード検索…"   %>
-    <%= submit_tag "検索" %>
+    <%= text_field_tag :title, params[:title], placeholder: "キーワード検索…", class: 'form-control' %>
+    <%= submit_tag "\uf002 検索", class: "fa" %>
     <% end %>
 </div>
 
@@ -19,8 +19,8 @@
                 <%= book.price %><span>円</span>
             </div>
             <div>
-                <%= button_to " カートに入れる", "/carts", {params: {book_id: book.id}} if current_user%> <%# button_toはデフォルトでpost %>
-                <%= "-" * 50 %>
+                <%= button_to "カートに入れる", "/carts", {params: {book_id: book.id}} if current_user %> <%# button_toはデフォルトでpost %>
+                <%# <%= "-" * 50 %>
             </div>
         </div>
         <% end %>

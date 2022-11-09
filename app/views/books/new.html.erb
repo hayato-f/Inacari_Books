@@ -15,7 +15,7 @@
 
     <div>
         <%= f.label :本のタイトル %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: 'form-control' %>
     </div>
     <div>
         <%= f.label :画像 %>
@@ -34,15 +34,15 @@
     </div>
     <div>
         <%= f.label :商品の説明 %>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, class: 'form-control' %>
     </div>
     <div>
         <%= f.label :税込価格 %>
-        <%= f.number_field :price %><span>円</span>
+        <%= f.number_field :price, class: 'form-control' %><span>円</span>
     </div>
     <div>
         <%= f.label :送料 %>
-        <%= f.number_field :postage %><span>円</span>
+        <%= f.number_field :postage, class: 'form-control' %><span>円</span>
     </div>
     <div>
         <%= f.label :公開・非公開 %>

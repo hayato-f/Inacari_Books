@@ -42,6 +42,7 @@
         <% end %>
     </div>
 </div>
+<p></p>
 <div>
     <% if logged_in? %>
         <div id="favorite_btn_<%= @book.id %>">
@@ -49,7 +50,7 @@
         </div>
     <% end %>
 </div>
-<%# コメントフォーム リダイレクトしないと表示されなかったからlocal: true（Ajax使わない）書いたらキタ%>
+<p></p>
 <div class="comment-wrapper">
     <div class="comment-form">
     <%= form_with(model:[@book, @comment], method: :post, local: true) do |f| %>
@@ -70,7 +71,10 @@
         <td class="comment-index"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td class="comment-index"><%= comment.user.account_name %></td>
         <td class="comment-index"><%= comment.comment %></td>
-        <td class="comment-index"><%= button_to '削除', book_comment_path(@book, comment), data: {confirm: "削除してよろしいですか？"}, method: :delete, class: "button-delete" %></td>
+        <td class="comment-index">
+        <%= button_to book_comment_path(@book, comment), data: {confirm: "削除してよろしいですか？"}, method: :delete, class: "button-delete" do %>
+        <i class="fa-solid fa-trash-can"></i></td>
+        <% end%>
     </tr>
 <% end %>
 </table>
