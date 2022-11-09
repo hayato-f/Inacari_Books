@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, notice: 'ログインしました。'
+      redirect_to user_path(user.id), notice: 'ログインしました。'
     else
       @error_message = '入力内容に誤りがあります。'
       render :new

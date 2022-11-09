@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def edit
     user_id = params[:id]
+    redirect_to root_path, notice: "他のユーザーのプロフィールを編集することはできません。" unless user_id == current_user.id.to_s
     @user = User.find_by(id: user_id)
     if @user.nil?
       redirect_to root_path
