@@ -12,3 +12,8 @@ ja:
         shipping_address: 住所
         password_digest: パスワード
         password_confirmation: パスワード確認
+      book:
+        title: タイトル
+        product_condition: 商品の状態
+        price: 税込価格
+        postage: 送料

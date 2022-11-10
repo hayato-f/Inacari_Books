@@ -1,2 +1,9 @@
 <h2>商品登録ページ</h2>
+<% if @book.errors.present? %>
+    <ul class="error_messages">
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
 <%= render 'form', book: @book %>

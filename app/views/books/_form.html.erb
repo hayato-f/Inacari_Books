@@ -1,5 +1,5 @@
 <div>
-    <%= form_with model: book do |f| %>
+    <%= form_with model: book, local: true do |f| %>
     <div>
         <%= f.label :カテゴリー %>
         <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>

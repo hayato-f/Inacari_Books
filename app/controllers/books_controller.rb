@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    if @book.save!
+    if @book.save
       redirect_to root_path
     else
       render :new
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update!(book_params)
-    redirect_to books_url, notice: "更新しました"
+    redirect_to root_path, notice: "更新しました"
   end
 
   def destroy
