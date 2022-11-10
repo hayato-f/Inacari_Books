@@ -1,0 +1,32 @@
+<h1>Order#index</h1>
+<p>Find me in app/views/order/index.html.erb</p>
+<% if @msg %>
+    <% @msg.each do |msg| %>
+     <h1><%= msg %></h1>
+    <% end %>
+<% end %>
+<%# model: @order_detailを追加　%>
+<%= form_with(model: @order, local: true) do |f| %>
+    <div>
+        <%= f.hidden_field :subtotal, value: @sub_total_price %>
+        <%= f.hidden_field :postage, value: @postage %>
+        <%= f.hidden_field :total_price, value: @total_price %>
+        <p>お届け先： <%= f.text_field :shipping_address, value: @user.shipping_address %></p>  <%#- value => 初期値　-%>
+    </div>
+    <div>
+        <div>支払い方法</div>
+        <div>
+            <%= f.label :支払い方法： %>
+            <% { 1 => "クレジットカード", 2 => "コンビニ", 3 => "銀行振込", 4 => "InaPay"}.each do |num, pay_method|%>
+                <%= f.radio_button :payment_method, num%>
+                <%= pay_method %>
+            <% end %>
+            
+        </div>
+        <%# radio_button 'page', 'category', 'rails_base', checked: true %>
+    </div>
+    <div><%= f.submit "確認ページへ"%></div>
+<% end %>
+<%= render 'shared/cart' %>
+
+<%#= link_to "確定", %>

@@ -15,5 +15,9 @@ class User < ApplicationRecord
 
     has_many :books, dependent: :destroy, foreign_key: :seller_id
     has_many :comments, dependent: :destroy
+
     has_many :favorites, dependent: :destroy
+
+    has_many :orders, dependent: :destroy, foreign_key: :seller_id
+    has_many :orders, dependent: :destroy, foreign_key: :buyer_id
 end
