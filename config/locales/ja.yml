@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      book: 商品
+    attributes:
+      user:
+        name: 名前
+        account_name: アカウント名
+        email: メールアドレス
+        tel: 電話番号
+        shipping_address: 住所
+        password_digest: パスワード
+        password_confirmation: パスワード確認
