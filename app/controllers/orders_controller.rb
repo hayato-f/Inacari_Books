@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     @order_detail = OrderDetail.new
     # byebug
   end
+  
   def create
     cart_logics
     
@@ -22,8 +23,8 @@ class OrdersController < ApplicationController
     # end
 
     if @order.save
-      # session[:cart].nil
-      redirect_to root_path
+      session[:cart] = nil
+      render 'thanx'
     else
       @msg = @order.errors.full_messages
       render 'new'

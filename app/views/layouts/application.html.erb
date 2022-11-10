@@ -16,6 +16,7 @@
         <%= current_user.name %><span>さま</span>
         <%= link_to '退会', current_user, method: :delete, data: { confirm: "退会するとこれまでのデータを元に戻すことができません。本当に宜しいですか？" }, class: "nav-link" %>
         <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %>
+        <%= link_to 'カート', carts_path, class: "nav-link" %>
         <%= link_to '商品一覧', books_path, class: "nav-link" %>
         <%= link_to '出品', new_book_path, class: "nav-link", data: {"turbolinks"=>false} %>
         <%= link_to 'マイページ', user_path(current_user), class: "nav-link" %>
