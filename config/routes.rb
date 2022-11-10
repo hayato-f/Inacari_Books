@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   # get 'carts/index'
   root 'books#index'
   resources :users
-  post 'carts', to: 'carts#index'
-  get 'orders', to: 'orders#index'
+  get 'carts', to: 'carts#index'
+  post 'carts', to: 'carts#create'
+  get 'orders', to: 'orders#new'
+  post 'orders', to: 'orders#create'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
