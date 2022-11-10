@@ -14,7 +14,6 @@
         <p>お届け先： <%= f.text_field :shipping_address, value: @user.shipping_address %></p>  <%#- value => 初期値　-%>
     </div>
     <div>
-        <div>支払い方法</div>
         <div>
             <%= f.label :支払い方法： %>
             <% { 1 => "クレジットカード", 2 => "コンビニ", 3 => "銀行振込", 4 => "InaPay"}.each do |num, pay_method|%>
@@ -25,7 +24,7 @@
         </div>
         <%# radio_button 'page', 'category', 'rails_base', checked: true %>
     </div>
-    <div><%= f.submit "確認ページへ"%></div>
+    <div><%= f.submit "注文を確定する"%></div>
 <% end %>
 <%= render 'shared/cart' %>
 
