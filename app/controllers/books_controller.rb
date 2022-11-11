@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: [:show, :edit]
+  before_action :unless_current_user, only: [:edit]
+
   def index
     @books = Book.published
     if params[:title].present?
@@ -20,16 +23,11 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
     @comment = Comment.new
     @comments = @book.comments.order(created_at: :desc)
   end
 
   def edit
-    @book = Book.find(params[:id])
-    unless current_user == @book.seller
-      redirect_to root_path
-    end
   end
 
   def update
@@ -49,4 +47,15 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:seller_id, :title, :image, :product_condition, :description, :price, :postage, :published, :soldout, category_ids: [] )
   end
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  def unless_current_user
+    unless current_user == @book.seller
+      redirect_to root_path
+    end
+  end
+
 end
