@@ -6,15 +6,14 @@ class OrdersController < ApplicationController
     @book = Book.all
     @order = Order.new
     @order_detail = OrderDetail.new
-    # byebug
   end
   
   def create
     cart_logics
-    
+    @user = current_user
     @order = Order.new(order_params)
     # @order.attributes = (order_params)
-    @order.buyer_id = current_user.id # == @order.buyer = current_user
+    @order.buyer_id = current_user.id # @order.buyer = current_userと同義
     
     # books = 0
     # session[:cart].each do |book|
