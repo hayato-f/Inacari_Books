@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit]
-  before_action :unless_current_user, only: [:edit]
+  before_action :unless_seller, only: [:edit]
 
   def index
     @books = Book.published
@@ -52,7 +52,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def unless_current_user
+  def unless_seller
     unless current_user == @book.seller
       redirect_to root_path
     end
