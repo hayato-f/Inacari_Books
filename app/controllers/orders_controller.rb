@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
       session[:cart] = nil
       render 'thanx'
     else
+      # byebug
       @msg = @order.errors.full_messages
       render 'new'
     end
