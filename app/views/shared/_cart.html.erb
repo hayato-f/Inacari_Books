@@ -1,17 +1,31 @@
-<% if @cart_books%>
-    <% @cart_books.each do |cart_book| %>
-        <li>タイトル： <%= cart_book.title %></li>
-        <li>状態： <%= cart_book.product_condition %></li>
-        <li>概要： <%= cart_book.description %></li>
-        <li>価格： ¥<%= cart_book.price %></li>
-        <li>送料： ¥<%= cart_book.postage %></li>
-        <li><%#= image_tag "@cart_books.image" %></li>
-        <li><%= "-" * 80 %></li>
+<div class="carts_style">
+    <% if @cart_books%>
+    <div class="book_all">
+        <% @cart_books.each do |cart_book| %>
+        <div class="book_index">
+            <div class="book_image">
+                <li><%= image_tag cart_book.image.url, class: "index-book-image", size: '220x300' %></li>
+            </div>
+            <div class="book_details">
+                <li class="book_details">タイトル： <%= cart_book.title %></li>
+                <li class="book_details">状態： <%= cart_book.product_condition %></li>
+                <li class="book_details">概要： <%= cart_book.description %></li>
+                <li class="book_details">価格： ¥<%= cart_book.price %></li>
+                <li class="book_details">送料： ¥<%= cart_book.postage %></li>
+                <li class="book_details"><strong>ここにカート削除機能を追加する</strong></li>
+            </div>
+        </div>
+            <li><%#= "-" * 80 %></li>
+        <% end %>
+    </div>
+    <div class="price">
+        <p>小計: ¥<%= @sub_total_price %></p>
+        <p>送料: ¥<%= @postage %></p>
+        <%#= "-" * 80 %>
+        <p>合計 (送料込み): ¥<%= @total_price%></p>
+        <%#= "-" * 80 %>
+    </div>
+    <% else %>
+        <h2 class="page_title">商品を追加しよう！！</h2> <%# => この条件分岐いらないかも　%>
     <% end %>
-    <p>小計: ¥<%= @sub_total_price %></p>
-    <%= "-" * 80 %>
-    <p>合計: ¥<%= @total_price%></p>
-    <%= "-" * 80 %>
-<% else %>
-    <h1>商品を追加しよう！！</h1> <%# => この条件分岐いらないかも　%>
-<% end %>
+</div>

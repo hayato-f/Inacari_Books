@@ -34,8 +34,13 @@
             <tr>
                 <th>送料</th><td><%= @book.postage %><span>円</span></td>
             </tr>
+            <tr>
+                <th>送料</th><td><%= @book.postage %><span>円</span></td>
+            </tr>
         </table>
-
+        <div class="calrt_link">
+            <%= button_to "カートに入れる", "/carts", {params: {book_id: @book.id}} if current_user %> <%# button_toはデフォルトでpost %>
+        </div>
 <%# ログインユーザーが出品した商品のみ編集ボタンが表示される %>
         <% if current_user && current_user.id == @book.seller_id %>
             <%= button_to "編集する", edit_book_path(@book.id), method: :get, class: "button" %>

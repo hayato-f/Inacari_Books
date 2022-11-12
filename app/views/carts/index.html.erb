@@ -1,12 +1,15 @@
+<h1 class="page_title">カート（一覧）</h1>
 <% if session[:cart].nil? %>
-    <h1 class="cart_empty">
+    <h2 class="cart_empty">
         カートは空っぽです！！<br>
         商品を追加しよう！！
-    </h1>
+    </h2>
     <p class="cart_empty"><%= link_to "商品を探す", "/books" %></p>
 <% else %>
-    <h1><%= flash[:cart_uniq] %></h1>
+    <h2 class="flash_msg"><%= flash[:cart_uniq] %></h2>
     <%= render 'shared/cart'%>
-    <p><%= link_to "商品を注文する", "/orders" %>>></p>
-    <p><<<%= link_to "商品を探す", "/books" %></p>
+    <div class="link">
+        <%= link_to "商品を探す", "/books" %>
+        <%= link_to "商品を注文する", "/orders" %>
+    </div>
 <% end %>

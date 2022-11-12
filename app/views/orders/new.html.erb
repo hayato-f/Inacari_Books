@@ -1,6 +1,7 @@
+<h1 class="page_title">ご注文確定ページ</h1>
 <% if @msg %>
     <% @msg.each do |msg| %>
-     <h1><%= msg %></h1>
+     <h2 class="flash_msg"><%= msg %></h2>
     <% end %>
 <% end %>
 <%# model: @order_detailを追加　%>
@@ -22,8 +23,13 @@
         </div>
         <%# radio_button 'page', 'category', 'rails_base', checked: true %>
     </div>
-    <div><%= f.submit "注文を確定する"%></div>
+    <div class="payment_method"><%= f.submit "注文を確定する"%></div>
 <% end %>
+<p class="border"></p>
+<h2 class="page_title">ご注文内容</h2>
 <%= render 'shared/cart' %>
+<div class="link">
+    <%= link_to "戻る", "/carts" %>
+</div>
 
 <%#= link_to "確定", %>

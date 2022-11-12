@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
 
   def index
-
     cart_logics
   end
   def create
