@@ -99,3 +99,63 @@ table th, table td {
     text-decoration: none;
     color: peru;
 }
+
+// カートページレイアウト
+.flash_msg{
+    text-align: center;
+    color: blue;
+}
+.border{
+    height: 0;
+    border: dotted;
+}
+.page_title, .link{
+    margin: 50px;
+    text-align: center;
+}
+
+
+.cart_empty{
+    text-align: center;
+}
+
+.carts_style{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.book_index{
+    border: solid 3px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    // background-color:rgb(196, 247, 247);
+    display: inline-flex;
+    .book_image{
+        // display: inline-block;
+        margin: 10px;
+    }
+    .book_details{
+        margin: 10px;
+        // justify-content: space-around;
+        width: 300px;
+        // display: inline-block;
+    }
+
+}
+.price{
+    border: solid 3px;
+    border-radius: 20px;
+    margin-left: 150px;
+    padding: 10px;
+    height: fit-content;
+    // position: absolute;
+    // background-color:rgb(253, 204, 212);
+}
+.payment_method{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.calrt_link{
+    margin-bottom: 20px;
+}

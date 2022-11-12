@@ -20,7 +20,6 @@
             </div>
             <div>
                 <%= button_to "カートに入れる", "/carts", {params: {book_id: book.id}} if current_user %> <%# button_toはデフォルトでpost %>
-                <%= "-" * 50 %>
             </div>
         </div>
         <% end %>
