@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit]
   before_action :unless_seller, only: [:edit]
+  before_action :logged_in?, only: [:new]
 
   def index
     @books = Book.published
@@ -55,6 +56,12 @@ class BooksController < ApplicationController
   def unless_seller
     unless current_user == @book.seller
       redirect_to root_path
+    end
+  end
+
+  def logged_in?
+    if current_user.nil?
+      redirect_to '/signup', notice: "会員登録してください"
     end
   end
 
