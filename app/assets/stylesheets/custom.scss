@@ -159,3 +159,15 @@ table th, table td {
 .calrt_link{
     margin-bottom: 20px;
 }
+
+// 注文履歴ページ
+.order_detail{
+    .order_detail_msg{
+        text-align: center;
+    }
+    .book_all{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+}

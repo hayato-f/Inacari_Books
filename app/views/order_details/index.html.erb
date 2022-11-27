@@ -1,20 +1,28 @@
-<h1>注文履歴</h1>
-<div>
+<h1 class="page_title">注文履歴</h1>
+<div class="order_detail">
     <% if @orders.blank? %>
-        <p>注文履歴はありません</p>
+        <h2 class="order_detail_msg"><注文履歴はありません></h2>
     <% else %>
+    <div class="book_all">
         <% @orders.each do |order| %>
             <% order.books.each do |book| %>
+            <div class="book_index">
                 <%# ordersとbooksの関係が多対多　 => 2回each分を回すと、データを取得できる！！　%>
                 <%# 1回目のeachでordersを取得。%>
                 <%# 2回目のeachでそのorderに対応したbooksを取得できる　%>
-                <p>タイトル：<%= book.title %></p>
-                <p><%= image_tag book.image.url, size: '220x300' %></p>
-                <p>価格：¥<%= order.total_price %></p>
-                <p>お届け先：<%= order.shipping_address %></p>
-                <p>注文日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+                <div class="book_image">
+                    <li><%= image_tag book.image.url, class: "index-book-image", size: '220x300' %></li>
+                </div>
+                <div class="book_details">
+                    <li class="book_details">タイトル：<%= book.title %></li>
+                    <li class="book_details">価格：¥<%= order.total_price %></li>
+                    <li class="book_details">お届け先：<%= order.shipping_address %></li>
+                    <li class="book_details">注文日時：<%= order.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+                </div>
+            </div>
             <% end %>
         <% end %>
+    </div>
     <% end %>
     
 </div>
