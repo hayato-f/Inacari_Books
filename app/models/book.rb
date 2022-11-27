@@ -21,4 +21,5 @@ class Book < ApplicationRecord
         favorites.where(user_id: user.id).exists?
     end
     has_many :order_details, dependent: :destroy
+    has_many :orders, through: :order_details
 end

@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
     has_many :order_details, dependent: :destroy
+    has_many :books, through: :order_details
     belongs_to :buyer, class_name: 'User', foreign_key: :buyer_id
 
     validates :buyer_id, presence: true

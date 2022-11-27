@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'order_details/index'
+  get 'order_details/show'
   get 'favorites/create'
   get 'favorites/destroy'
   # get 'order/index'
